@@ -45,7 +45,7 @@ void test_bread(void){
 void test_bwrite(void){
     unsigned char testBlock[4096] = {1,1,1,1,1,0};
     bwrite(1,testBlock);
-    CTEST_ASSERT(bread(1,testBlock)==testBlock, "test  for block write(write, then assert read)");
+    CTEST_ASSERT(bread(1,testBlock)==testBlock, "test for the block read is same as argument");
 }
 
 void test_open_img(void){
@@ -72,7 +72,7 @@ void test_incore_find_and_free(void)
     CTEST_ASSERT(node1 != NULL, "test incore_find");
     node1->ref_count = 1;
     incore_free_all();
-    CTEST_ASSERT(node1->ref_count == 0, "test incore_free_all");
+    CTEST_ASSERT(node1->ref_count == 0, "test incore_free_all frees the test node");
 
 }
 
@@ -82,7 +82,7 @@ void test_read_write_inode(void) {
     struct inode write_node;
     in.inode_num = 0;
     read_inode(&in, 0);
-    CTEST_ASSERT(in.inode_num == 0, "test read and write inode");
+    CTEST_ASSERT(in.inode_num == 0, "test read &w rite inode");
     
     write_inode(&in);
     read_inode(&write_node, in.inode_num);
