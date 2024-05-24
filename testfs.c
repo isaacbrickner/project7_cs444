@@ -86,7 +86,7 @@ void test_read_write_inode(void) {
     
     write_inode(&in);
     read_inode(&write_node, in.inode_num);
-    CTEST_ASSERT(write_node.inode_num == in.inode_num, "est write_inode");
+    CTEST_ASSERT(write_node.inode_num == in.inode_num, "test write_inode");
     
 }
 
