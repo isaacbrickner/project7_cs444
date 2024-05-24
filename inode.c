@@ -13,10 +13,6 @@
 
 static struct inode incore[MAX_SYS_OPEN_FILES] = {0};
 
-// Read the free inode bitmap block from disk
-// Find a free inode in the bitmap
-// Mark it use in-use
-// Write the free inode bitmap block to disk
 struct inode *ialloc(unsigned char *inode_map)
 {
     bread(1, inode_map);
